@@ -128,6 +128,7 @@ INSTALLED_APPS = (
     'cars',
     'temp',
     'decoration',
+    'rosetta',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

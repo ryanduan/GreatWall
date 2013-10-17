@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     url(r'^suv$', 'suvs.views.suv'),
     url(r'^car$', 'cars.views.car'),
     url(r'^auto$', 'views.auto'),
-    url(r'^ryan$', 'views.ryan')
+    url(r'^ryan$', 'views.ryan'),
+    url(r'^rosetta/', include('rosetta.urls')),
 )

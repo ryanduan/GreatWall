@@ -13,3 +13,15 @@ Ubuntu:
  pip install django
 
  pip install django-rosetta
+
+ pip install fabric
+
+fabric:
+ touch fabfile.py
+ vim fabfile.py
+
+rosetta:
+ mkdir locale
+ mkdir locale/en
+ mkdir locale/zh
+ fab makemessages

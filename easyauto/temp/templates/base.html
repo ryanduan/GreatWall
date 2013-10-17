@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 {% block css %}{% endblock %}
 {% block js %}{% endblock %}
-<title>{% block title %}Great Wall{% endblock %}</title>
+<title>{% block title %}{% trans "Ryan's Great Wall" %}{% endblock %}</title>
 </head>
 <body>
 {% block main %}
