@@ -1,5 +1,13 @@
-from django.http import HttpResponse
+#from django.conf import settings
+#from django.http import HttpResponse
+from django.shortcuts import render_to_response
+
 
 def auto(req):
-    tem = "<title>auto</title><H1>test of h1</h1>"
-    return HttpResponse(tem)
+    tem = "auto.html"
+    return render_to_response(tem, {})
+
+
+def ryan(req):
+    tem = "ryan.html"
+    return render_to_response(tem, {})

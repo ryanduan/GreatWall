@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'suvs',
     'cars',
+    'temp',
     'decoration',
 )
 
