@@ -4,3 +4,6 @@
 #Packages
 *.egg
 *.egg-info
+
+#DBfile
+*.db
