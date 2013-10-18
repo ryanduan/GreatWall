@@ -1,0 +1,76 @@
+How Django discovers language preference
+Once you’ve prepared your translations – or, if you just want to use the translations that come with Django – you’ll just need to activate translation for your app.
+
+Behind the scenes, Django has a very flexible model of deciding which language should be used – installation-wide, for a particular user, or both.
+
+To set an installation-wide language preference, set LANGUAGE_CODE. Django uses this language as the default translation – the final attempt if no better matching translation is found through one of the methods employed by the locale middleware (see below).
+
+If all you want is to run Django with your native language all you need to do is set LANGUAGE_CODE and make sure the corresponding message files and their compiled versions (.mo) exist.
+
+If you want to let each individual user specify which language he or she prefers, then you also need to use use the LocaleMiddleware. LocaleMiddleware enables language selection based on data from the request. It customizes content for each user.
+
+To use LocaleMiddleware, add 'django.middleware.locale.LocaleMiddleware' to your MIDDLEWARE_CLASSES setting. Because middleware order matters, you should follow these guidelines:
+
+Make sure it’s one of the first middlewares installed.
+It should come after SessionMiddleware, because LocaleMiddleware makes use of session data. And it should come before CommonMiddleware because CommonMiddleware needs an activated language in order to resolve the requested URL.
+If you use CacheMiddleware, put LocaleMiddleware after it.
+For example, your MIDDLEWARE_CLASSES might look like this:
+
+MIDDLEWARE_CLASSES = (
+   'django.contrib.sessions.middleware.SessionMiddleware',
+   'django.middleware.locale.LocaleMiddleware',
+   'django.middleware.common.CommonMiddleware',
+)
+(For more on middleware, see the middleware documentation.)
+
+LocaleMiddleware tries to determine the user’s language preference by following this algorithm:
+
+Changed in Django 1.4.
+First, it looks for the language prefix in the requested URL. This is only performed when you are using the i18n_patterns function in your root URLconf. See Internationalization: in URL patterns for more information about the language prefix and how to internationalize URL patterns.
+
+Failing that, it looks for a django_language key in the current user’s session.
+
+Failing that, it looks for a cookie.
+
+The name of the cookie used is set by the LANGUAGE_COOKIE_NAME setting. (The default name is django_language.)
+
+Failing that, it looks at the Accept-Language HTTP header. This header is sent by your browser and tells the server which language(s) you prefer, in order by priority. Django tries each language in the header until it finds one with available translations.
+
+Failing that, it uses the global LANGUAGE_CODE setting.
+
+Notes:
+
+In each of these places, the language preference is expected to be in the standard language format, as a string. For example, Brazilian Portuguese is pt-br.
+
+If a base language is available but the sublanguage specified is not, Django uses the base language. For example, if a user specifies de-at (Austrian German) but Django only has de available, Django uses de.
+
+Only languages listed in the LANGUAGES setting can be selected. If you want to restrict the language selection to a subset of provided languages (because your application doesn’t provide all those languages), set LANGUAGES to a list of languages. For example:
+
+LANGUAGES = (
+  ('de', _('German')),
+  ('en', _('English')),
+)
+This example restricts languages that are available for automatic selection to German and English (and any sublanguage, like de-ch or en-us).
+
+If you define a custom LANGUAGES setting, as explained in the previous bullet, it’s OK to mark the languages as translation strings – but use a “dummy” ugettext() function, not the one in django.utils.translation. You should never import django.utils.translation from within your settings file, because that module in itself depends on the settings, and that would cause a circular import.
+
+The solution is to use a “dummy” ugettext() function. Here’s a sample settings file:
+
+ugettext = lambda s: s
+
+LANGUAGES = (
+    ('de', ugettext('German')),
+    ('en', ugettext('English')),
+)
+With this arrangement, django-admin.py makemessages will still find and mark these strings for translation, but the translation won’t happen at runtime – so you’ll have to remember to wrap the languages in the real ugettext() in any code that uses LANGUAGES at runtime.
+
+The LocaleMiddleware can only select languages for which there is a Django-provided base translation. If you want to provide translations for your application that aren’t already in the set of translations in Django’s source tree, you’ll want to provide at least a basic one as described in the Locale restrictions note.
+
+Once LocaleMiddleware determines the user’s preference, it makes this preference available as request.LANGUAGE_CODE for each HttpRequest. Feel free to read this value in your view code. Here’s a simple example:
+
+def hello_world(request, count):
+    if request.LANGUAGE_CODE == 'de-at':
+        return HttpResponse("You prefer to read Austrian German.")
+    else:
+        return HttpResponse("You prefer to read another language.")
+Note that, with static (middleware-less) translation, the language is in settings.LANGUAGE_CODE, while with dynamic (middleware) translation, it’s in request.LANGUAGE_CODE.
