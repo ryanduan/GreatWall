@@ -1,5 +1,6 @@
-##Welcome to Ryan's GreatWall
-###This is a free program.
+##Welcome to Ryan's Great Wall
+This is a free program.
+
 I can show how to create a django project and how to make the project internationalization.
 
 You can read the Wiki and make you development environment and you also can clone my project.
