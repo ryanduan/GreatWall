@@ -1,3 +1,0 @@
-
-def car(req):
-    pass
