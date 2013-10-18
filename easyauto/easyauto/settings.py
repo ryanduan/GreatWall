@@ -6,7 +6,12 @@ TEMPLATE_DEBUG = DEBUG
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
-
+# Add by Ryan at 2013-10-18 for rosetta
+_ = lambda s : s
+LANGUAGES = (
+    ('zh', _('Chinese')),
+    ('en', _('English')),
+)
 MANAGERS = ADMINS
 
 DATABASES = {
@@ -33,7 +38,7 @@ TIME_ZONE = 'Asia/Shanghai'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh'
 
 SITE_ID = 1
 
@@ -43,7 +48,8 @@ USE_I18N = True
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale.
-USE_L10N = True
+# Add by Ryan at 2013-10-18 for rosetta
+USE_L10N = False
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
@@ -100,6 +106,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+# Add by Ryan at 2013-10-18 for rosetta
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'easyauto.urls'
@@ -126,6 +134,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'suvs',
     'decoration',
+# Add by Ryan at 2013-10-18 for rosetta
     'rosetta',
 )
 

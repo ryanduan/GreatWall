@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-17 17:21+0800\n"
+"POT-Creation-Date: 2013-10-18 15:35+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: temp/templates/base.html:8 temp/templates/base_car.html:7
-#: temp/templates/base_suv.html:7
+#: suvs/templates/base.html:10 suvs/templates/base_car.html:7
+#: suvs/templates/base_suv.html:7
 msgid "Ryan's Great Wall"
+msgstr "我的长城"
+
+#: suvs/templates/ryan.html:3
+msgid "Ryan"
+msgstr ""
+
+#: suvs/templates/ryan.html:4
+msgid "What is he like ?"
+msgstr ""
+
+#: suvs/templates/ryan.html:5
+msgid "Maybe Haval H6"
 msgstr ""

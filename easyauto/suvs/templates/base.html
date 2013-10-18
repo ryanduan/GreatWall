@@ -1,13 +1,18 @@
-<!DOCTYPE html>
 {% load i18n %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 {% block css %}{% endblock %}
+<script>
 {% block js %}{% endblock %}
+</script>
 <title>{% block title %}{% trans "Ryan's Great Wall" %}{% endblock %}</title>
 </head>
 <body>
+
+<button onclick="setLanguage('en')">English</button>
+<button onclick="segLanguage('zh')">中文</button>
 {% block main %}
 
 {% endblock %}

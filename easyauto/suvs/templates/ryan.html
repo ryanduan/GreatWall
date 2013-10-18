@@ -1,6 +1,11 @@
 {% extends "base.html" %}
+{% load i18n %}
+{% block js %}
+
+{% endblock %}
 {% block main %}
-<h3>Ryan</h3>
-<h4>What is he like ?</h4>
-<p> Maybe Haval H6</p>
+<h4>{{language_code}}</h4>
+<h3>{% trans "Ryan" %}</h3>
+<h4>{% trans "What is he like ?" %}</h4>
+<p> {% trans "Maybe Haval H6" %}</p>
 {% endblock %}
