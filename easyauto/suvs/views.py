@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+
 
 def suv(req):
-    pass
+    return HttpResponse("OK")
