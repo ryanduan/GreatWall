@@ -14,7 +14,7 @@ class brand(models.Model):
     creattime = models.DateTimeField(auto_now_add=True)
 
 
-class series(models.Model):
+class serie(models.Model):
 
     def __unicode__(self):
         return self.seriesname
@@ -33,3 +33,4 @@ class series(models.Model):
     description = models.TextField(null=True, blank=True)
     creattime = models.DateTimeField(auto_now_add=True)
     updatetime = models.DateTimeField(null=True, blank=True)
+    stars = models.SmallIntegerField(null=True, blank=True)

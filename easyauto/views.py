@@ -12,7 +12,7 @@ def auto(req):
 
 def ryan(request):
     if request.LANGUAGE_CODE == "zh":
-        tem =
+        tem = "Chinese"
     elif request.LANGUAGE_CODE == 'en':
         tem = 'English'
     return HttpResponse(tem)

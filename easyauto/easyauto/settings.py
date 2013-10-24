@@ -138,6 +138,8 @@ INSTALLED_APPS = (
     'decoration',
 # Add by Ryan at 2013-10-18 for rosetta
     'rosetta',
+    'south',
+    'southtut',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
