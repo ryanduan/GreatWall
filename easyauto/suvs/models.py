@@ -34,3 +34,4 @@ class serie(models.Model):
     creattime = models.DateTimeField(auto_now_add=True)
     updatetime = models.DateTimeField(null=True, blank=True)
     stars = models.SmallIntegerField(null=True, blank=True)
+    hot = models.SmallIntegerField(null=True, blank=True)

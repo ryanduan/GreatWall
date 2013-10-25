@@ -8,24 +8,22 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'GreatWall'
-        db.create_table(u'southtut_greatwall', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('create_at', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
-        ))
-        db.send_create_signal(u'southtut', ['GreatWall'])
+        # Adding field 'GreatWall.deep_learning'
+        db.add_column(u'southtut_greatwall', 'deep_learning',
+                      self.gf('django.db.models.fields.TextField')(null=True, blank=True),
+                      keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting model 'GreatWall'
-        db.delete_table(u'southtut_greatwall')
+        # Deleting field 'GreatWall.deep_learning'
+        db.delete_column(u'southtut_greatwall', 'deep_learning')
 
 
     models = {
         u'southtut.greatwall': {
             'Meta': {'object_name': 'GreatWall'},
             'create_at': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'deep_learning': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }

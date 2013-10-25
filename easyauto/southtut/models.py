@@ -1,3 +1,12 @@
 from django.db import models
+from django.utils import timezone
 
-# Create your models here.
+
+class GreatWall(models.Model):
+    name = models.CharField(max_length=100)
+    create_at = models.DateTimeField(default=timezone.now)
+    deep_learning = models.TextField(null=True, blank=True)
+
+    def __unicode__(self):
+        return self.name
+
