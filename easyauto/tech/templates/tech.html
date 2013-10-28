@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Technology of ryan</title>
+</head>
+<body>
+    <section>
+        {% for kind in kinds %}
+            <p>{{kind}}</p>
+        {% endfor %}
+    </section><hr />
+    <section>
+        {% for blog in blogs %}
+            {% autoescape off %}
+                <h2>{{blog.title}}</h2>
+                <p>{{blog.user}}&nbsp;&nbsp;&nbsp;&nbsp;{{blog.create_at}}&nbsp;&nbsp;&nbsp;&nbsp;{{blog.kind}}&nbsp;&nbsp;&nbsp;&nbsp;{{blog.good_heart}}</p>
+                {{blog.content}}
+            {% endautoescape %}
+        {% endfor %}
+    </section><hr />
+</body>
+</html>
