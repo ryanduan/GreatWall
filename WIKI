@@ -1,3 +1,8 @@
+####Introduction
+######Functions
+1. Django i18n (unfinished): more than one language in the project.
+
+2. South: database migration.
 
 ###Install on Ubuntu 12.04(12.10/13.04/13.10):
 ####Deployment environment

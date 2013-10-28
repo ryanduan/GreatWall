@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     'rosetta',
     'south',
     'southtut',
+    'technology',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
