@@ -134,13 +134,12 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'suvs',
-    'decoration',
 # Add by Ryan at 2013-10-18 for rosetta
     'rosetta',
     'south',
     'southtut',
-    'technology',
+    'tech',
+    'auto',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

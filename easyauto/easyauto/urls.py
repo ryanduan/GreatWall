@@ -15,9 +15,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^suv$', 'suvs.views.suv'),
-    url(r'^auto$', 'views.auto'),
+    url(r'^auto$', 'auto.views.auto'),
     url(r'^ryan$', 'views.ryan'),
     url(r'^rosetta/', include('rosetta.urls')),
-    url(r'^tech/', 'technology.views.tech'),
+    url(r'^tech/', 'tech.views.tech'),
 )
