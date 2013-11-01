@@ -18,5 +18,5 @@ urlpatterns = patterns('',
     url(r'^auto$', 'auto.views.auto'),
     url(r'^ryan$', 'views.ryan'),
     url(r'^rosetta/', include('rosetta.urls')),
-    url(r'^tech/', 'tech.views.tech'),
+    url(r'^tech/', include('tech.urls')),
 )

@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<title>Technology of ryan</title>
-</head>
-<body>
+{% extends 'tech_base.html' %}
+{% block title %}Technology of ryan{% endblock %}
+{% block bodycontent %}
     <section>
         {% for kind in kinds %}
             <p>{{kind}}</p>
@@ -14,10 +10,10 @@
         {% for blog in blogs %}
             {% autoescape off %}
                 <h2>{{blog.title}}</h2>
+                <!--change time display style: timezone:"Asia/Shanghai"|date:"Y-m-d H:i" & timezone:"Asia/Shanghai"|date:"Y-m-d H:iA" & it have some errors  -->
                 <p>{{blog.user}}&nbsp;&nbsp;&nbsp;&nbsp;{{blog.create_at}}&nbsp;&nbsp;&nbsp;&nbsp;{{blog.kind}}&nbsp;&nbsp;&nbsp;&nbsp;{{blog.good_heart}}</p>
                 {{blog.content}}
             {% endautoescape %}
         {% endfor %}
     </section><hr />
-</body>
-</html>
+{% endblock %}
