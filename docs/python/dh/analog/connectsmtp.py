@@ -16,7 +16,7 @@ class Connectsmtp(object):
     fromaddr = "tech-automated@deliveryherochina.com"
     toaddr = "tech@deliveryherochina.com"
     username = "tech-automated@deliveryherochina.com"
-    password = "wmcr1234"
+    password = "XXXXXXXX"
     subject = "DeliverhHero log analysis"
     smtpser = "smtp.gmail.com:587"
 
