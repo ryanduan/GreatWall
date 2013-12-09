@@ -1,0 +1,30 @@
+pip install tornado
+
+# Dbutils.PersistentDB
+pip install DBUtils
+
+# mongodb
+pip install pymongo
+
+# MySQLdb
+sudo pip install pip --upgrade
+sudo apt-get build-dep python-mysqldb
+pip install MySQL-python
+
+# reids
+pip install redis
+
+# chardet
+pip install chardet
+
+# Image
+pip install pil
+
+# fdfs_client    https://code.google.com/p/fastdfs/downloads/detail?name=fdfs_client-py-1.2.6.tar.gz&can=2&q=
+python setup.py install
+
+# poster.encode
+pip install poster
+
+# dateutil.parser
+pip install dateutils
