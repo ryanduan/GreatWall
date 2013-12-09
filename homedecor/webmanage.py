@@ -27,7 +27,7 @@ class MyFormHandler(tornado.web.RequestHandler):
 application = tornado.web.Application([
     (r"/", MainHandler),
     (r"/story/([0-9]+)", StoryHandler),
-    (r"/myform/", MyFormHandler),
+    (r"/myform", MyFormHandler),
 ])
 
 if __name__ == "__main__":
