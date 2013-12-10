@@ -1,0 +1,67 @@
+<html>
+   <head>
+      <title>{{ title }}</title>
+   </head>
+
+
+<script type="text/javascript">
+function OpYear(){
+for( var i=1958;i<=2010;i++){
+var List,ListText
+List=document.createElement("option");
+ListText=document.createTextNode(i);
+List.appendChild(ListText);
+document.getElementById("st_01").appendChild(List);
+if (i==1986){
+List.selected="selected";
+}
+
+}
+
+
+
+for(var j=1;j<=12;j++){
+var List,ListText
+List=document.createElement("option");
+ListText=document.createTextNode(j);
+List.appendChild(ListText);
+document.getElementById("st_02").appendChild(List);
+if(j==12){
+List.selected="selected";
+}
+
+}
+
+
+
+for(var j=1;j<=31;j++){
+
+var List,ListText
+List=document.createElement("option");
+ListText=document.createTextNode(j);
+List.appendChild(ListText);
+document.getElementById("st_03").appendChild(List);
+if(j==12){
+List.selected="selected";
+}
+
+}
+
+
+
+}
+window.onload=function(){OpYear();}
+
+</script>
+</head>
+<body>
+<form>
+<select id="st_01" >
+</select>
+<select id="st_02" style="width:40px;">
+</select>
+<select id="st_03" style="width:40px;">
+</select>
+</form>
+</body>
+</html>

@@ -3,6 +3,7 @@
 
 import tornado.ioloop
 import tornado.web
+from tornado.web import RequestHandler
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -23,11 +24,28 @@ class MyFormHandler(tornado.web.RequestHandler):
         self.set_header("Content-Type", "text/plain")
         self.write("You wrote " + self.get_argument("message"))
 
+class User():
+    id = 1
+    name = "Ryan"
+    addr = "Shanghai"
+    def getId(self):
+        return 1
+    def getName(self):
+        return "RyanDoris"
+    def getAddr(self):
+        return "SH"
+
+class ItemHandler(tornado.web.RequestHandler):
+    def get(self):
+        items = ["Item 1", "Item 2", "Item 3"]
+        data = {'nick': User()}
+        self.render("template.html", title="My title", items=items, **data)
 
 application = tornado.web.Application([
     (r"/", MainHandler),
     (r"/story/([0-9]+)", StoryHandler),
     (r"/myform", MyFormHandler),
+    (r"/item", ItemHandler),
 ])
 
 if __name__ == "__main__":
