@@ -1,0 +1,78 @@
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"//></script>
+<script type="text/javascript">
+$(document).ready(function(){  
+        var bd_y = $("[name='bd_year']");
+        var bd_m = $("[name='bd_month']");
+        var bd_d = $("[name='bd_day']");
+        var innerHTML;
+        if(bd_y.size()){
+            var date = new Date();
+            innerHTML = "<option value=''></option> ";
+            for(var year = date.getFullYear(); year > 1910; year--){
+                innerHTML += '<option value="'+year+'">'+year+'</option>';
+            }
+            bd_y.append(innerHTML);
+        }
+        if(bd_m.size()){
+            innerHTML = "<option value=''></option> ";
+            for(var month = 1; month < 13; month++){
+                innerHTML += '<option value="'+month+'">'+month+'</option>';
+            }
+            bd_m.append(innerHTML);
+        }
+        if(bd_d.size()){
+            innerHTML = "<option value=''></option> ";
+            for(var day = 1; day < 32; day++){
+                innerHTML += '<option value="'+day+'">'+day+'</option>';
+            }
+            bd_d.append(innerHTML);
+        }
+    inputdate(); 
+    function inputdate(){        
+        var init_bd_year = $("[name='init_bd_year']");
+        var init_bd_month = $("[name='init_bd_month']");
+        var init_bd_day = $("[name='init_bd_day']");
+
+        if (init_bd_year != "None") {
+            $("[name='bd_year']").val($("[name='init_bd_year']").val());
+        }
+        if (init_bd_month != "None") {
+            $("[name='bd_month']").val($("[name='init_bd_month']").val());
+        }
+        if (init_bd_day != "None") {
+            $("[name='bd_day']").val($("[name='init_bd_day']").val());
+        }
+    }     
+    
+   $("button").click(function(){
+        inputdate();
+    });
+});
+</script>
+</head>
+
+<body>
+<p>input your birthday</p>
+Year:<input type="text" name="init_bd_year" id="init_bd_year" value="2000" /><br />
+Month:<input type="text" name="init_bd_month" value="12" /><br />
+Day:<input type="text" name="init_bd_day" value="13" /><br />
+<p>
+click the button, it can do sth. Like get your input date output to the under selector!
+</p>
+<button>click me</button></br>
+<tr>
+    <th>BHD</th>
+    
+    <td>
+        <select name="bd_year"></select>
+
+        <select name="bd_month"></select>
+        
+        <select name="bd_day"></select> 
+    </td>
+</tr>
+
+</body>
+</html> 

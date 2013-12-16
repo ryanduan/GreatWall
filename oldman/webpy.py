@@ -3,10 +3,6 @@
 import web
 
 urls = (
-# -*- coding:utf-8 -*-
-import web
-
-urls = (
     '/', 'oldman'
 )
 
