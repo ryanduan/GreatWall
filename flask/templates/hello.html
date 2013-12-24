@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Ryan</title>
+    </head>
+    <body>
+        <!--<img src="/static/images/headimg.png" />-->
+        <img src="{{head}}" />
+        <h1>Hello Ryan!</h1>
+        <p>{{name}}Welcome to flask</p>
+        {% for i in l1 %}
+            <li>{{i}}</li>
+        {% endfor %}
+        <hr /><br />
+        {% for k, v in d1.items() %}
+            <p>{{k}}:{{v}}</p>
+        {% endfor %}
+        <div>
+            <form action="" method="post" >
+                username <input type="text" name="username"  /><br />
+                password <input type="password" name="password"  /><br />
+                <input type="submit" value="submit">
+            </form>
+            <a href="/regist/" >regist</a><br />
+            <a href="/up/" >upload</a>
+        </div>
+    </body>
+</html>
