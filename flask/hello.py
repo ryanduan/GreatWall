@@ -6,6 +6,7 @@ from flask import url_for
 from flask import request
 
 import os
+import sqlite3
 
 app = Flask(__name__)
 
@@ -25,6 +26,22 @@ def hello_world():
 @app.route('/regist/', methods=['GET', 'POST'])
 def regist():
     return render_template('regist.html')
+
+@app.route('/login/', methods=['GET', 'POST'])
+def login():
+    if request.method == "POST":
+        username = request.form.get('username')
+        password = request.form.get('password')
+        conn = sqlite3.connect('my.db')
+        cursor = conn.cursor()
+        sql = 'insert into user (username, password) values (?, ?)'
+        cursor.execute(sql, (username, password))
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return '%s, %s regist & login' % (username, password)
+    else:
+        return render_template('login.html')
 
 @app.route('/done/')
 def over():
