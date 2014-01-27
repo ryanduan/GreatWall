@@ -1,23 +1,8 @@
-"This is the personal .vimrc file of Ryan Duan.
-"Thanks for Steve's spf13.
-"         ____
-"        |  _ \
-"        | |_) |                  _
-"        | |__/    ______  _____ (_)
-"        | | \`\  / / _` \/  _` \ /
-"        | |  \ \/ / (_) || | | |
-"        |_|   \  / \__/\_\_| |_|
-"              / /
-"             /_/
-"
-"
-
-
 " Initializing {
     syntax on                   " Syntax highlighting
     set magic
     vmap <C-c> "+y
-    set mouse=a                 " Automatically enable mouse usage
+    set mouse=c                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     scriptencoding utf-8
     set virtualedit=onemore             " Allow for cursor beyond last character
@@ -57,11 +42,32 @@
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
     set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-
-    " Add at 2014-01-27
-    set t_Co=256
-    colorscheme delek
-
 " }
+if has('mouse')
+    set mouse=a
+endif
+if &t_Co > 2 || has("gui_running")
+    syntax on
+    set hlsearch
+endif
+if has("autocmd")
+    filetype plugin indent on
+    augroup vimrcEx
+    au!
+    autocmd FileType text setlocal textwidth=78
+    autocmd BufReadPost *
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \ exe "normal! g `\"" |
+      \ endif
 
+    augroup END
+
+else
+    set autoindent
+endif
+
+if !exists(":DiffOrig")
+    command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis 
+            \ | wincmd p | diffthis
+endif
 
